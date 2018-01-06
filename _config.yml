@@ -1,7 +1,7 @@
 # Site settings
 name: 亮仔的博客
 email: t503038616@163.com
-author: M/J
+author: 田兆亮
 url: http://dztian.xin
 resume_site: http://dztian.xin/me/
 github: https://github.com/t50303866/
@@ -17,11 +17,11 @@ paginate: 8
 paginate_path: "page:num"
 gems: [jekyll-paginate]
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
-github_username: maoxiaoke
+github_username: t50303866
 highlighter: rouge
 markdown: kramdown
 FB:
   comments :
     provider : disqus
     disqus :
-        short_name : xiaokedada
+        short_name : tzl
