@@ -8,10 +8,10 @@ tag: 面试
 * content
 {:toc}
 
-1. String、StringBuffer和StringBuilder区别
+## 1. String、StringBuffer和StringBuilder区别
 简单说：就是一个变量和常量的关系。StringBuffer对象的内容可以修改；而String对象一旦产生就不可以被修改（不可改变的字符串具有一个很大的优点:编译器可以把字符串设为共享的），重新赋值其实是两个对象。StringBuffer是线程安全的。StringBuilder不是线程安全的，是StringBuffer的简易版，在单线程中使用更快。
 
-2. 线程有几种状态，分别是哪些？（调用run()和start()的区别）
+## 2. 线程有几种状态，分别是哪些？（调用run()和start()的区别）
 	- 新建状态（New）：新创建了一个线程对象。
 
 	- 就绪状态（Runnable）：线程对象创建后，其他线程调用了该对象的start()方法。该状态的线程位于“可运行线程池”中，变的可运行，只等待获取CPU的使用权限。即在就绪状态的进程除CPU之外，其它的运行所需资源都已全部获得。
