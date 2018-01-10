@@ -70,11 +70,16 @@ Activity的最长执行时间是5s，BroadcastReceiver的最长执行时间则�
 开发中，当我们再子线程做了一些操作后需要更新UI，由于Android不允许子线程中访问UI控件，所以我们一般都会使用Handler来实现。
 
 Handler的机制需要MessageQueue、Looper和Message的支持。他们在消息机制中各扮演了不同的角色
+
 Handler：负责消息的发送和接收处理
+
 MessageQueue：消息队列，一个消息存储单位，经常需要进行增减，内部使用的单链表的结构
+
 Looper：消息循环。会不停地从MessageQueue中获取消息，如果有新消息就会立刻处理，否则就一直阻塞在那里
+
 Message：消息载体
 
+**执行流程**
 1. 首先调用Looper.prepare()方法，会创建一个Looper实例，该实例包含一个MessageQueue，并将该实例保存在当前线程中ThreadLocal
 2. 调用Looper.loop()开始消息循环，不断地向MessageQueue中读取消息，并调用msg.target.dispatchMessage(msg)；来处理消息
 3. 构建Handler的时候，会先获取到当前Handler所在线程的Looper并得到其中的MessageQueue
