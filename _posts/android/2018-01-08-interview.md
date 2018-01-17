@@ -88,3 +88,20 @@ Message：消息载体
 6. Handler的dispatchMessage最终回去调用handlerMessage()方法。
 
 > Handler的handler在哪条线程执行，取决于构建Handler时所使用的是哪条线程保存的Looper，因为handlerMessage其实是Looper去调用的。
+
+### 8. listview recycleview分页加载实现思路
+
+通过监听Listview Or Recycleview的滑动事件，判读是否达到最后一条，如果达到最后一条则加载新数据，刷新adapter
+
+### 9. 加载大图片时如何防止内存溢出
+- 只得到图片的宽高 ： BitmapFactory.Options这个类，有个字段叫做 inJustDecodeBounds 。如果我们把它设为true，那么BitmapFactory.decodeFile(String path,Options opt)并不会真的返回一个Bitmap，它仅仅会把它的宽高给你，并不会占用太多内存。
+` BitmapFactory.Options options = new BitmapFactory.Options();
+  options.inJustDecodeBounds = true;
+  Bitmap bmp = BitmapFactory.decodeFile(path, options);    /* 这里返回的bmp是null */`
+
+- 获取需要绘制的原图 ： 通过BitmapFactory.decodeStream方法，等比例创建出一个bitmap
+ ` InputStream is = this.getResources().openRawResource(R.drawable.pic1);
+  BitmapFactory.Options options=new BitmapFactory.Options();
+  options.inJustDecodeBounds = false;
+  options.inSampleSize = 10;   //width，hight设为原来的十分一
+  Bitmap btp =BitmapFactory.decodeStream(is,null,options);`
