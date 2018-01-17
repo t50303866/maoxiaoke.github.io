@@ -105,3 +105,23 @@ Message：消息载体
   options.inJustDecodeBounds = false;
   options.inSampleSize = 10;   //width，hight设为原来的十分一
   Bitmap btp =BitmapFactory.decodeStream(is,null,options);`
+
+### 10. 如何实现一键退出
+1. 在自己的MeApplication中创建集合，用于存储Activity
+> public List<Activity> mainActivity = new LinkedList<Activity>();
+2. 创建添加和清除Activity的方法
+>  public void finishAll() {
+            for (Activity act : mainActivity) {
+                    if (!act.isFinishing()) {
+                            act.finish();
+                    }
+            }
+        	mainActivity.clear();
+            mainActivity = null;
+            System.exit(0);
+>    }
+3.  在BaseActivity的OnCreate()方法中添加 --- 加入Activity
+> application = (MeApplication) getApplicationContext();
+> application.addActivity(this);
+4.  所有Activity都继承BaseActivity
+5.  退出时调用MeApplication中的清除方法
