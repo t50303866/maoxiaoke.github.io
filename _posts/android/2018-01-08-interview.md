@@ -125,3 +125,8 @@ Message：消息载体
 > application.addActivity(this);
 4.  所有Activity都继承BaseActivity
 5.  退出时调用MeApplication中的清除方法
+
+### 11. JDK和JRE的区别是什么
+JDK是Java的开发工具，它不仅提供了Java程序运行所需的JRE，还提供了一系列的编译，运行等工具，如：javac，java，javaw等。JRE只是java程序运行的最小环境，它最核心的内容是JVM及核心类库。
+
+### 12. static关键字的含义
