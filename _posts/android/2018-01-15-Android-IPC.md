@@ -48,3 +48,8 @@ Messenger是一种轻量级的IPC方案，它的底层实现是AIDL。
 > 在Messenger中进行数据传递必须将数据放入Message中。Messenger是以串行的方式处理客户端发来的消息
 
 ### 使用AIDL
+1. 服务端：服务端首先要创建一个Service用来监听客户端的链接请求，然后创建一个AIDL文件，将暴露给客户端的接口在这个AIDL文件中声明，最后在Service中实现这个AIDL接口即可。
+2. 客户端：首先需要绑定服务端的Service，绑定成功后，将服务端返回的Binder对象转成AIDL接口属性的类型，接着就可以调用AIDL中的方法了。
+3. AIDL接口创建
+4. 远程服务端Service的实现
+5. 客户端的实现
